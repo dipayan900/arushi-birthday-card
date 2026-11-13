@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100d25">
+<meta name="description" content="A little birthday universe made with love for Arushi.">
+<title>For Arushi ✦</title>
+<style>
+:root{color-scheme:dark;--ink:#f9efff;--muted:#c9b8d9;--pink:#ff9bc9;--violet:#b9a1ff;--gold:#ffe2a8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,'Times New Roman',serif;background:radial-gradient(ellipse at 50% 0%,#38234f 0,#1a1531 38%,#090b1c 100%);overflow-x:hidden}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0}.wrap{position:relative;z-index:1;width:min(900px,100%);margin:auto;padding:28px 20px 70px;text-align:center}
+.eyebrow{font:600 10px/1.5 system-ui,sans-serif;letter-spacing:.32em;text-transform:uppercase;color:#d9b8ed;margin:25px 0 16px}
+h1{font-size:clamp(48px,12vw,88px);font-weight:400;line-height:.98;margin:0;letter-spacing:-.045em;text-shadow:0 0 35px #e18ac866}
+h1 span{display:block;color:var(--pink);font-style:italic}.sub{font-size:clamp(16px,3vw,20px);color:var(--muted);line-height:1.7;max-width:550px;margin:24px auto 30px}
+button{border:1px solid #f4b9dd88;background:linear-gradient(135deg,#e99acb,#a99af5);color:#21152e;padding:14px 24px;border-radius:999px;font:700 12px system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 30px #d58bd544;transition:.25s}button:hover{transform:translateY(-3px);box-shadow:0 12px 38px #d58bd577}
+.panel{margin:55px auto 0;max-width:650px;padding:clamp(24px,6vw,48px);border:1px solid #e9c4ed35;border-radius:28px;background:linear-gradient(145deg,#ffffff0d,#ffffff04);box-shadow:0 25px 80px #03030d66;backdrop-filter:blur(12px)}
+.panel h2{font-size:clamp(28px,6vw,42px);font-weight:400;margin:0 0 18px}.panel p{font-size:17px;line-height:1.9;color:#e7d9ed;margin:12px 0}
+.hidden{display:none!important}.envelope-area{margin:38px auto 8px;perspective:900px}.envelope{position:relative;width:min(270px,75vw);height:175px;margin:auto;background:linear-gradient(145deg,#dca5d5,#9279bd);border-radius:8px;box-shadow:0 22px 45px #05040e88;cursor:pointer;transition:transform .4s}.envelope:before{content:'';position:absolute;inset:0;background:linear-gradient(35deg,transparent 49%,#b88fc9 50%) left bottom/50% 100% no-repeat,linear-gradient(-35deg,transparent 49%,#c99bcf 50%) right bottom/50% 100% no-repeat}.flap{position:absolute;inset:0 0 auto;height:100px;background:#e9b9dc;clip-path:polygon(0 0,100% 0,50% 78%);transform-origin:top;transition:transform .8s;z-index:3}.seal{position:absolute;z-index:4;left:50%;top:55%;transform:translate(-50%,-50%);font-size:30px;filter:drop-shadow(0 3px 3px #5b315b)}.envelope.open .flap{transform:rotateX(180deg)}.envelope.open{transform:translateY(5px)}
+.letter{max-width:590px;margin:24px auto 0;padding:26px 24px;border-radius:18px;background:#fff8f0;color:#4a3550;text-align:left;box-shadow:0 20px 50px #0005;animation:rise .9s both}.letter p{font-size:17px;line-height:1.9;color:#59445b}.letter .sign{color:#a34f86;font-style:italic;font-size:22px;text-align:right;margin-top:25px}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.cake{font-size:76px;margin:8px 0 0;filter:drop-shadow(0 0 22px #ffacd866);animation:bob 3s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-9px)}}
+.wish{font-size:14px;color:var(--muted);margin:12px 0 25px}.footer{margin-top:65px;color:#a99bbd;font:11px system-ui,sans-serif;letter-spacing:.16em}.spark{position:fixed;pointer-events:none;font-size:18px;animation:float 1.2s ease-out forwards;z-index:5}@keyframes float{to{transform:translate(var(--x),-100px) rotate(30deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style></head>
+<body><canvas id="stars"></canvas><main class="wrap">
+<div class="eyebrow">A little universe, made just for you</div>
+<h1>Happy Birthday <span>Arushi</span></h1>
+<p class="sub">Some people make ordinary days feel like magic. Today, the universe gets to celebrate one of them.</p>
+<button id="begin">Open your little surprise ✦</button>
+<section class="panel" id="surprise">
+<div class="eyebrow">A note from the heart</div><h2>One little letter, just for you</h2>
+<p>Tap the envelope. There's something waiting inside.</p>
+<div class="envelope-area"><div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the birthday letter"><div class="flap"></div><div class="seal">✦</div></div></div>
+<div id="letter" class="letter hidden">
+<p>Dear Arushi,</p>
+<p>Happy birthday! I hope this new chapter brings you countless reasons to smile, peaceful days, exciting little adventures, and dreams that slowly turn into beautiful memories.</p>
+<p>Thank you for being a special part of my world. Even the simplest moments can become unforgettable when they are shared with someone who matters. I hope today reminds you how appreciated you are.</p>
+<p>Keep being wonderfully you. May your year be as lovely, bright, and full of surprises as the stars on this little page.</p>
+<p class="sign">With lots of love, always ✨</p>
+</div></section>
+<section class="panel" id="wish">
+<div class="eyebrow">Before the candles go out</div><div class="cake">🎂</div><h2>Make a birthday wish</h2>
+<p class="wish">Take a quiet moment, think of something wonderful, and tap below.</p>
+<button id="wishBtn">My wish is made ✨</button><p id="wishMsg" class="wish hidden">May the year ahead bring your wish a little closer. Happy birthday, Arushi! 🌙</p>
+</section><div class="footer">MADE OF STARDUST & A LITTLE BIT OF HEART · ✦</div>
+</main>
+<script>
+const canvas=document.getElementById('stars'),ctx=canvas.getContext('2d');let stars=[];
+function resize(){canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);stars=Array.from({length:Math.min(130,Math.floor(innerWidth/5))},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.5+.25,a:Math.random()*.65+.2,p:Math.random()*6}))}
+function draw(t){ctx.clearRect(0,0,innerWidth,innerHeight);for(const s of stars){ctx.globalAlpha=s.a*(.65+.35*Math.sin(t/900+s.p));ctx.fillStyle='#fff1ff';ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;requestAnimationFrame(draw)}addEventListener('resize',resize);resize();requestAnimationFrame(draw);
+document.getElementById('begin').addEventListener('click',()=>document.getElementById('surprise').scrollIntoView({behavior:'smooth'}));
+const env=document.getElementById('envelope');function openLetter(){env.classList.add('open');setTimeout(()=>document.getElementById('letter').classList.remove('hidden'),420);sparkles(18)}
+env.addEventListener('click',openLetter);env.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLetter()}});
+function sparkles(n){for(let i=0;i<n;i++){const s=document.createElement('span');s.className='spark';s.textContent=['✦','♡','✧','✨'][i%4];s.style.left=(innerWidth*.2+Math.random()*innerWidth*.6)+'px';s.style.top=(innerHeight*.5+Math.random()*innerHeight*.3)+'px';s.style.setProperty('--x',(Math.random()*180-90)+'px');document.body.appendChild(s);setTimeout(()=>s.remove(),1300)}}
+document.getElementById('wishBtn').addEventListener('click',()=>{document.getElementById('wishMsg').classList.remove('hidden');sparkles(28);document.getElementById('wishBtn').textContent='A little magic for you ✨'});
+</script></body></html>
