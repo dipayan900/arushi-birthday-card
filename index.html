@@ -49,6 +49,13 @@ main{min-height:70vh}.page{display:none;animation:pageIn .6s ease both}.page.act
 .atelier-entry p{margin:7px 0 0;color:#715761;font:13px/1.7 'Playfair Display';white-space:pre-wrap}
 .capsule-status{font:italic 15px 'Playfair Display';color:#a76878;min-height:25px;margin:10px 0}
 @media(max-width:700px){.atelier-grid{grid-template-columns:1fr}}
+
+/* Reliable celebration overlay and soundtrack credit */
+#celebration{position:fixed!important;inset:0!important;z-index:9999!important;pointer-events:none;visibility:hidden;opacity:0;transition:opacity .35s ease,visibility .35s ease}
+#celebration.show{pointer-events:auto;visibility:visible;opacity:1}
+#celebration .celebrate-close,#celebration #replayCelebration{pointer-events:auto}
+#celebrateButton{position:relative;z-index:2;cursor:pointer;touch-action:manipulation}
+.music-credit{display:block;color:var(--gold);font-size:9px;letter-spacing:.08em;text-decoration:underline;margin-top:2px}
 </style>
 </head>
 <body>
@@ -130,6 +137,6 @@ let typed='';document.addEventListener('keydown',e=>{if(e.key.length===1&&/[a-z]
 // Double-tap the birthday cake for a tiny extra celebration
 let cakeTap=0;$('.cake-art').addEventListener('click',()=>{cakeTap++;if(cakeTap>=2){cakeTap=0;burst(35);toast('A little extra birthday sparkle ✦')}setTimeout(()=>cakeTap=0,700)});
 // Birthday celebration mode
-function openCelebration(){const c=$('#celebration');c.classList.add('show');for(let i=0;i<32;i++){const s=document.createElement('span');s.className='spark';s.textContent=['✦','✧','·','♡'][i%4];s.style.left=Math.random()*100+'%';s.style.animationDelay=Math.random()*5+'s';s.style.animationDuration=(4+Math.random()*4)+'s';c.append(s)}}function closeCelebration(){$('#celebration').classList.remove('show');$$('.spark').forEach(s=>s.remove())}$('#celebrateButton').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openCelebration()});document.addEventListener('click',e=>{if(e.target.closest('#celebrateButton')){e.preventDefault();openCelebration()}});$('#celebrateClose').addEventListener('click',closeCelebration);$('#replayCelebration').addEventListener('click',()=>{closeCelebration();setTimeout(openCelebration,150)});
+function openCelebration(){const c=document.getElementById('celebration');if(!c)return;c.classList.add('show');c.setAttribute('aria-hidden','false');c.querySelectorAll('.spark').forEach(s=>s.remove());for(let i=0;i<32;i++){const s=document.createElement('span');s.className='spark';s.textContent=['✦','✧','·','♡'][i%4];s.style.left=Math.random()*100+'%';s.style.animationDelay=Math.random()*2+'s';s.style.animationDuration=(4+Math.random()*4)+'s';c.append(s)}document.body.classList.add('celebration-open')}window.openBirthdayCelebration=openCelebration;function closeCelebration(){const c=document.getElementById('celebration');if(!c)return;c.classList.remove('show');c.setAttribute('aria-hidden','true');c.querySelectorAll('.spark').forEach(s=>s.remove());document.body.classList.remove('celebration-open')}document.getElementById('celebrateButton')?.addEventListener('click',function(e){e.preventDefault();e.stopImmediatePropagation();window.openBirthdayCelebration()});document.getElementById('celebrateClose')?.addEventListener('click',closeCelebration);document.getElementById('replayCelebration')?.addEventListener('click',()=>{closeCelebration();window.setTimeout(openCelebration,180)});
 </script>
 </body></html>
